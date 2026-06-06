@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Créez votre compte FemSport et profitez de –20% sur votre première commande." />
+  <title>Inscription – FemSport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../style/main.css" />
+  <link rel="stylesheet" href="../style/nav.css" />
+  <link rel="stylesheet" href="../style/auth.css" />
+</head>
+<body class="auth-page">
+ 
+  <div class="auth-full-bg">
+    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1920&auto=format&fit=crop" alt="Fond Inscription FemSport" class="bg-img" />
+    <div class="bg-overlay"></div>
+  </div>
+
+  <div id="main-header"></div>
+
+  <main class="auth-container" id="main-content">
+   
+    <div class="auth-welcome-text">
+      <h1>Prête à briller ?</h1>
+      <p>Rejoignez la communauté FemSport. Créez votre compte pour accéder à des collections exclusives et bénéficier de -20% sur votre premier achat.</p>
+    </div>
+
+    <section class="auth-card" aria-labelledby="register-heading">
+      <div class="auth-form-wrap">
+        <header class="auth-header">
+          <div class="auth-logo-box">
+            <a href="../index.html" class="auth-logo" aria-label="FemSport">
+              <span class="logo-fem">Fem</span><span class="logo-sport">Sport</span>
+            </a>
+          </div>
+          <h2 id="register-heading" class="auth-title">Créer un compte</h2>
+          <p class="auth-subtitle">Rejoignez-nous en quelques secondes.</p>
+        </header>
+
+        <form id="register-form" class="auth-form" novalidate>
+        
+          <div class="form-row">
+            <div class="form-group">
+              <label for="register-prenom" class="form-label">Prénom</label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-user field-icon"></i>
+                <input type="text" id="register-prenom" name="prenom" class="form-input" placeholder="Prénom" required />
+              </div>
+              <span id="register-prenom-error" class="form-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="register-nom" class="form-label">Nom</label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-user field-icon"></i>
+                <input type="text" id="register-nom" name="nom" class="form-input" placeholder="Nom" required />
+              </div>
+              <span id="register-nom-error" class="form-error"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="register-email" class="form-label">Adresse e-mail</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-envelope field-icon"></i>
+              <input type="email" id="register-email" name="email" class="form-input" placeholder="votre@email.com" required />
+            </div>
+            <span id="register-email-error" class="form-error"></span>
+          </div>
+
+    
+          <div class="form-group">
+            <label for="register-phone" class="form-label">Téléphone</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-phone field-icon"></i>
+              <input type="tel" id="register-phone" name="phone" class="form-input" placeholder="0661234567" />
+            </div>
+            <span id="register-phone-error" class="form-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="register-password" class="form-label">Mot de passe</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <div class="input-password-wrap">
+                <input type="password" id="register-password" name="password" class="form-input" placeholder="••••••••" required />
+                <button type="button" class="toggle-password" aria-label="Afficher le mot de passe">
+                  <span class="eye-icon">👁</span>
+                </button>
+              </div>
+            </div>
+            <span id="register-password-error" class="form-error"></span>
+
+            <div class="password-strength-container" style="margin-top: 10px;">
+              <div class="password-strength" aria-label="Force du mot de passe">
+                <div class="strength-bar" id="strength-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                  <div class="strength-bar__fill" id="strength-fill"></div>
+                </div>
+                <span id="password-strength-label" class="strength-label" aria-live="polite"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="register-confirm" class="form-label">Confirmer</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <div class="input-password-wrap">
+                <input type="password" id="register-confirm" name="confirm" class="form-input" placeholder="••••••••" required />
+              </div>
+            </div>
+            <span id="register-confirm-error" class="form-error"></span>
+          </div>
+
+          <div class="form-options">
+            <label class="form-check">
+              <input type="checkbox" id="accept-cgu" name="cgu" required />
+              <span class="form-check-label">J'accepte les conditions d'utilisation</span>
+            </label>
+          </div>
+
+          <div id="register-global-msg" class="form-global-msg" role="alert" aria-live="assertive"></div>
+
+          <button type="submit" class="btn btn-primary btn--full" id="register-submit">Créer mon compte</button>
+        </form>
+
+        <p class="auth-switch">
+          Déjà membre ? 
+          <a href="connexion.html" class="auth-link">Se connecter</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-main">
+      <div class="container footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="../index.html" class="footer-logo">
+            <span class="logo-fem">Fem</span><span class="logo-sport">Sport</span>
+          </a>
+          <p class="footer-tagline">L'élégance et la performance au service de la femme active. Conçu pour bouger, respirer et briller.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com" class="social-btn" aria-label="Facebook" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.instagram.com" class="social-btn" aria-label="Instagram" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://www.pinterest.com" class="social-btn" aria-label="Pinterest" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-pinterest-p"></i>
+            </a>
+
+            <a href="https://wa.me/33123456789" class="social-btn" aria-label="WhatsApp" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="https://www.tiktok.com" class="social-btn" aria-label="TikTok" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Boutique</h3>
+          <ul class="footer-links">
+            <li><a href="produits.html?cat=leggings">Leggings Performance</a></li>
+            <li><a href="produits.html?cat=brassieres">Brassières & Tops</a></li>
+            <li><a href="produits.html?cat=chaussures">Running & Training</a></li>
+            <li><a href="produits.html?cat=accessoires">Accessoires Yoga</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Aide & Infos</h3>
+          <ul class="footer-links">
+            <li><a href="profil.html">Mon Compte</a></li>
+            <li><a href="profil.html">Suivi de commande</a></li>
+            <li><a href="#">Livraison & Retours</a></li>
+            <li><a href="#">Guide des tailles</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <div class="contact-info">
+            <p>📍 Paris, France</p>
+            <p>📞 +33 (0) 1 23 45 67 89</p>
+            <p>📧 contact@femsport.fr</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 FemSport. Créé avec passion pour les sportives.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../javascript/data.js"></script>
+  <script src="../javascript/auth.js"></script>
+  <script src="../javascript/nav.js"></script>
+  <script src="../javascript/panier.js"></script>
+
+</body>
+</html>

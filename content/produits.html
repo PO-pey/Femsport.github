@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvrez notre catalogue FemSport complet : leggings, brassières, chaussures et accessoires sport pour femmes." />
+  <title>Nos Produits – FemSport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../style/main.css" />
+  <link rel="stylesheet" href="../style/nav.css" />
+  <link rel="stylesheet" href="../style/produits.css" />
+</head>
+<body>
+
+  <div id="main-header"></div>
+
+  <main id="main-content">
+
+    <header class="products-page-header" aria-label="En-tête de la page produits">
+      <div class="container">
+        <h1 class="products-page-title" id="page-heading">Notre Collections</h1>
+        <p class="products-page-sub" id="page-sub">Bougez avec élégance, choisissez votre style</p>
+      </div>
+    </header>
+
+    <div class="products-toolbar" aria-label="Filtres et tri">
+      <div class="container">
+        <div class="products-toolbar-inner">
+          <div class="sort-wrapper">
+            <label for="sort-select" class="sr-only">Trier par</label>
+            <select id="sort-select" class="sort-select" aria-label="Trier les produits">
+              <option value="default">Trier par défaut</option>
+              <option value="price-asc">Prix croissant</option>
+              <option value="price-desc">Prix décroissant</option>
+              <option value="rating">Mieux notés</option>
+              <option value="name">Nom A-Z</option>
+            </select>
+          </div>
+          <p class="products-count" id="products-count" aria-live="polite" aria-atomic="true"></p>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="filter-bar" role="navigation" aria-label="Filtres par catégorie">
+      <div class="container">
+        <div id="filter-buttons" class="filter-buttons" role="group" aria-label="Filtrer par catégorie">
+      
+        </div>
+      </div>
+    </div>
+
+    <section class="products-section" aria-labelledby="page-heading">
+      <div class="container">
+        <div id="products-grid" class="products-grid" role="list" aria-live="polite" aria-atomic="true">
+          <p class="loading-msg">Chargement des produits…</p>
+        </div>
+
+    
+        <div id="no-results" class="no-results" hidden aria-live="polite">
+          <p class="no-results__icon" aria-hidden="true">🔎</p>
+          <p class="no-results__text">Aucun produit ne correspond à vos filtres.</p>
+          <button type="button" class="btn btn--outline" onclick="resetFilters()">Réinitialiser les filtres</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <div
+    id="modal-overlay"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Détail du produit"
+    aria-hidden="true"
+    hidden
+  >
+    <div id="product-modal" class="product-modal">
+
+      <button type="button" class="modal-close" id="modal-close-btn" aria-label="Fermer la fenêtre">
+        <span aria-hidden="true">✕</span>
+      </button>
+
+  
+      <div class="modal-grid">
+        <div class="modal-gallery" id="modal-gallery">
+          <img id="modal-img" src="" alt="" class="modal-main-img" width="500" height="600" />
+        </div>
+
+        <div class="modal-info" id="modal-info">
+          <span id="modal-category" class="modal-category"></span>
+          <h2 id="modal-title" class="modal-title"></h2>
+          <div class="modal-rating" id="modal-rating" aria-label="Note du produit"></div>
+          <div class="modal-price-wrap">
+            <strong id="modal-price" class="modal-price"></strong>
+            <del id="modal-old-price" class="modal-old-price"></del>
+            <span id="modal-badge" class="modal-badge"></span>
+          </div>
+          <p id="modal-desc" class="modal-desc"></p>
+
+          <div class="modal-options" id="modal-colors-wrap">
+            <p class="modal-options__label">Couleur : <strong id="modal-selected-color"></strong></p>
+            <div id="modal-colors" class="modal-colors" role="group" aria-label="Choisir une couleur"></div>
+          </div>
+          <div class="modal-options" id="modal-sizes-wrap">
+            <p class="modal-options__label">Taille : <strong id="modal-selected-size"></strong></p>
+            <div id="modal-sizes" class="modal-sizes" role="group" aria-label="Choisir une taille"></div>
+          </div>
+
+          <div class="modal-actions">
+            <div class="modal-qty">
+              <button type="button" class="qty-btn" id="modal-qty-minus" aria-label="Diminuer la quantité">−</button>
+              <input type="number" id="modal-qty-input" class="qty-input" value="1" min="1" max="10" aria-label="Quantité" readonly />
+              <button type="button" class="qty-btn" id="modal-qty-plus" aria-label="Augmenter la quantité">+</button>
+            </div>
+            <button type="button" class="btn btn--primary btn--add-cart" id="modal-add-btn">
+              🛒 Ajouter au panier
+            </button>
+          </div>
+
+        
+          <div class="modal-reviews" id="modal-reviews-section">
+            <h3 class="modal-reviews__title">Ce que nos clientes en pensent</h3>
+            <div id="modal-reviews-list" class="modal-reviews-list"></div>
+          </div>
+
+    
+          <ul class="modal-guarantees" aria-label="Garanties">
+            <li><i class="fa-solid fa-truck-fast"></i> Livraison gratuite dès 50 €</li>
+            <li><i class="fa-solid fa-arrow-rotate-left"></i> Retour gratuit sous 30 jours</li>
+            <li><i class="fa-solid fa-shield-halved"></i> Paiement 100 % sécurisé</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-main">
+      <div class="container footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="../index.html" class="footer-logo">
+            <span class="logo-fem">Fem</span><span class="logo-sport">Sport</span>
+          </a>
+          <p class="footer-tagline">L'élégance et la performance au service de la femme active. Conçu pour bouger, respirer et briller.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com" class="social-btn" aria-label="Facebook" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.instagram.com" class="social-btn" aria-label="Instagram" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://www.pinterest.com" class="social-btn" aria-label="Pinterest" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-pinterest-p"></i>
+            </a>
+
+            <a href="https://wa.me/33123456789" class="social-btn" aria-label="WhatsApp" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="https://www.tiktok.com" class="social-btn" aria-label="TikTok" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Boutique</h3>
+          <ul class="footer-links">
+            <li><a href="produits.html?cat=leggings">Leggings Performance</a></li>
+            <li><a href="produits.html?cat=brassieres">Brassières & Tops</a></li>
+            <li><a href="produits.html?cat=chaussures">Running & Training</a></li>
+            <li><a href="produits.html?cat=accessoires">Accessoires Yoga</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Aide & Infos</h3>
+          <ul class="footer-links">
+            <li><a href="profil.html">Mon Compte</a></li>
+            <li><a href="profil.html">Suivi de commande</a></li>
+            <li><a href="#">Livraison & Retours</a></li>
+            <li><a href="#">Guide des tailles</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <div class="contact-info">
+            <p><i class="fa-solid fa-location-dot"></i> Paris, France</p>
+            <p><i class="fa-solid fa-phone"></i> +33 (0) 1 23 45 67 89</p>
+            <p><i class="fa-solid fa-envelope"></i> contact@femsport.fr</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 FemSport. Créé avec passion pour les sportives.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../javascript/data.js"></script>
+  <script src="../javascript/auth.js"></script>
+  <script src="../javascript/nav.js"></script>
+  <script src="../javascript/panier.js"></script>
+  <script src="../javascript/produits.js"></script>
+
+  <script>
+   
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'hidden' && !mutation.target.hidden) {
+          setTimeout(renderModalReviews, 50);  
+        }
+      });
+    });
+
+    const modalOverlay = document.getElementById('modal-overlay');
+    if (modalOverlay) observer.observe(modalOverlay, { attributes: true });
+
+    function renderModalReviews() {
+      const title = document.getElementById('modal-title').textContent;
+      const product = PRODUCTS.find(p => p.name === title);
+      const list = document.getElementById('modal-reviews-list');
+      if (!list || !product) return;
+      
+      list.innerHTML = '';
+      if (product.comments && product.comments.length > 0) {
+        product.comments.forEach((rev, index) => {
+          const item = document.createElement('div');
+          item.className = 'review-item';
+          item.style.animationDelay = `${index * 0.15}s`;
+          item.innerHTML = `
+            <div class="review-header"><span class="review-user">${rev.user}</span><span class="review-date">${rev.date}</span></div>
+            <div class="review-stars">${'<i class="fa-solid fa-star"></i>'.repeat(rev.rating)}</div>
+            <p class="review-text">"${rev.text}"</p>`;
+          list.appendChild(item);
+        });
+      } else {
+        list.innerHTML = '<p class="loading-msg">Aucun avis pour le moment. Soyez la première !</p>';
+      }
+    }
+
+  </script>
+
+</body>
+</html>

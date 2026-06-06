@@ -1,0 +1,241 @@
+/**
+ * panier.css — Style e-commerce professionnel pour FemSport
+ */
+
+.cart-page-header {
+  padding: var(--sp-2xl) 0;
+  text-align: center;
+  background: var(--clr-white);
+}
+.cart-page-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  color: var(--clr-dark);
+}
+.cart-page-title span { color: var(--clr-primary); font-family: var(--font-body); font-size: var(--fs-xl); }
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--sp-xl);
+  align-items: start;
+  margin-bottom: var(--sp-4xl);
+}
+
+/* CARTE ARTICLES (Gauche) */
+.cart-items-card {
+  background: var(--clr-white);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-xl);
+  box-shadow: var(--shadow-md);
+}
+.cart-items-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-xl);
+  border-bottom: 1px solid var(--clr-border);
+  padding-bottom: var(--sp-md);
+}
+.cart-items-header h2 { font-size: var(--fs-xl); color: var(--clr-dark); }
+.btn-clear-cart {
+  font-size: var(--fs-sm);
+  color: var(--clr-mid);
+  transition: color var(--tr-fast);
+}
+.btn-clear-cart:hover { color: var(--clr-error); }
+
+/* Liste des articles */
+.cart-item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: var(--sp-lg);
+  padding: var(--sp-lg) 0;
+  border-bottom: 1px solid var(--clr-border);
+  align-items: center;
+}
+.cart-item:last-child { border-bottom: none; }
+
+.cart-item-img {
+  width: 100px; height: 120px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  background: var(--clr-light);
+}
+.cart-item-info h3 { font-size: var(--fs-md); margin-bottom: 4px; color: var(--clr-dark); }
+.cart-item-meta { font-size: var(--fs-sm); color: var(--clr-mid); margin-bottom: 8px; }
+.cart-item-price-unit { font-weight: 500; font-size: var(--fs-sm); color: var(--clr-dark-mid); }
+
+.cart-item-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--sp-md);
+}
+.cart-item-subtotal { font-weight: 700; font-size: var(--fs-md); color: var(--clr-dark); }
+.btn-remove { color: var(--clr-mid); transition: color var(--tr-fast); }
+.btn-remove:hover { color: var(--clr-error); }
+
+/* RÉCAPITULATIF (Droite) */
+.cart-summary {
+  background: var(--clr-blush);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-2xl);
+  position: sticky;
+  top: 100px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--clr-accent);
+}
+.cart-summary__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  margin-bottom: var(--sp-xl);
+  color: var(--clr-dark);
+  text-align: center;
+}
+
+.summary-label {
+  display: block;
+  font-weight: 700;
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: var(--clr-dark-mid);
+}
+
+/* Promo */
+.promo-section { margin-bottom: var(--sp-xl); }
+.promo-input-group {
+  display: flex;
+  gap: 8px;
+}
+.promo-input-group input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+}
+.btn-apply {
+  padding: 0 15px;
+  background: var(--clr-dark);
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+}
+
+/* Shipping Cards */
+.shipping-section { margin-bottom: var(--sp-xl); }
+.shipping-options { display: flex; flex-direction: column; gap: 10px; }
+.shipping-card {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background: var(--clr-white);
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--tr-base);
+}
+.shipping-card input { margin-right: 12px; accent-color: var(--clr-primary); }
+.ship-info { flex: 1; display: flex; flex-direction: column; }
+.ship-name { font-weight: 700; font-size: var(--fs-sm); color: var(--clr-dark); }
+.ship-time { font-size: var(--fs-xs); color: var(--clr-mid); }
+.ship-price { font-weight: 700; font-size: var(--fs-sm); color: var(--clr-primary-dark); }
+.ship-price.free { color: var(--clr-success); }
+
+/* État sélectionné Shipping */
+.shipping-card:has(input:checked) {
+  border-color: var(--clr-primary);
+  background: var(--clr-white);
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.1);
+}
+
+/* Lignes de prix */
+.summary-lines {
+  border-top: 1px dashed var(--clr-accent-dark);
+  padding-top: var(--sp-md);
+  margin-bottom: var(--sp-xl);
+}
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  color: var(--clr-dark-mid);
+  font-size: var(--fs-md);
+}
+.summary-line--promo { color: var(--clr-success); font-weight: 600; }
+.summary-line--total {
+  margin-top: var(--sp-md);
+  padding-top: var(--sp-md);
+  border-top: 2px solid var(--clr-dark);
+  font-weight: 900;
+  font-size: var(--fs-xl);
+  color: var(--clr-dark);
+}
+.summary-line--total span:last-child { color: var(--clr-primary-dark); }
+
+/* Boutons actions */
+.btn-commander {
+  width: 100%;
+  background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-dark));
+  color: white;
+  padding: 18px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: var(--fs-md);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3);
+  transition: transform var(--tr-base), box-shadow var(--tr-base);
+  margin-bottom: 15px;
+  display: flex; justify-content: center; align-items: center; gap: 10px;
+}
+.btn-commander:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 105, 180, 0.4); }
+.btn-commander:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+
+.continue-link {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  color: var(--clr-dark-mid);
+  text-decoration: underline;
+  font-size: var(--fs-sm);
+}
+
+/* Garanties */
+.summary-guarantees {
+  margin-top: var(--sp-xl);
+  padding-top: var(--sp-lg);
+  border-top: 1px solid var(--clr-accent);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.summary-guarantees li {
+  font-size: var(--fs-xs);
+  color: var(--clr-dark-mid);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+/* ÉTAT VIDE */
+.cart-empty {
+  background: var(--clr-white);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-4xl) var(--sp-xl);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+.cart-empty__icon { font-size: 5rem; margin-bottom: var(--sp-md); opacity: 0.3; }
+.cart-empty__title { font-family: var(--font-display); font-size: var(--fs-3xl); margin-bottom: var(--sp-sm); }
+.cart-empty__text { color: var(--clr-mid); margin-bottom: var(--sp-xl); }
+
+@media (max-width: 992px) {
+  .cart-layout { grid-template-columns: 1fr; }
+  .cart-summary { position: static; }
+}
