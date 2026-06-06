@@ -126,8 +126,8 @@ PANIER
   MEMBRES DU GROUPE
 ────────────────────────────────────────────────────────────────────────────────
 
-  1. LABED AMINA     — Section :1      Groupe :7
-  2. TOUAT MUSTAPHA  — Section :2      Groupe :2
+  1. LABED AMINA     — Section :2      Groupe :7
+  2. TOUAT MUSTAPHA  — Section :1      Groupe :2
 
 ================================================================================
   FemSport © 2025-2026 — Université Mouloud MAMMERI de Tizi-Ouzou
